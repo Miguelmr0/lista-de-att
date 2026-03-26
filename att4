@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main(){ 
+    setlocale(LC_ALL, "Portuguese");
+    int a;
+    int b;
+    int quociente1;
+    int quociente2; 
+    int produto;
+    int soma;
+    
+    printf("Digite o primeiro número: \n");
+    scanf("%d", &a);
+    
+    printf("Digite o segundo número: \n");
+    scanf("%d", &b);
+ 
+    soma = a + b;
+    printf("O resultado da soma é: %d \n", soma);
+    
+    produto = (a + b) * (a + b);
+    printf("O produto da soma dos itens é: %d \n", produto);
+    
+    quociente1 = (a + b) / a;
+    printf("O quociente da soma (com o primeiro dado) dos itens é: %d \n", quociente1); 
+    
+    quociente2 = (a + b) / b;
+    printf("O quociente da soma (com o segundo dado) dos itens é: %d \n", quociente2);
+    
+    return 0;
+}
