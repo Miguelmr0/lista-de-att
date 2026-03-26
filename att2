@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main(){ 
+	setlocale(LC_ALL, "Portuguese");
+  int numero;
+  int antecessor = 1;
+  int sucessor = 1;
+  int resultado;
+  
+  printf("Digite um número para descobrir seu antecessor e seu sucessor: \n");
+  scanf("%d" , &numero);
+  
+  resultado = numero - antecessor;
+  printf("O antecessor de %d é: ", resultado);
+  
+  printf("\n");
+  
+  resultado = numero + sucessor;
+  printf("O sucessor de %d é: ", resultado);
+  
+  
+	
+	return 0;
+}
