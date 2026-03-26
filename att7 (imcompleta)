@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main(){ 
+    setlocale(LC_ALL, "Portuguese");
+    
+    double areacilin;
+	double pi = 3.14;
+    double raio;
+    double altura;
+    
+    
+    printf("Digite o valor do raio do cilindro: \n");
+    scanf("%lf", &raio);
+    
+    printf("Digite o valor da altura do cilindro: \n");
+    scanf("%lf", &altura);
+    
+    areacilin = 2* pi * raio *(altura + raio);
+    printf("A área do cilindro é:  %.2lf \n", areacilin);
+    
+    
+    
+      return 0;
+}
