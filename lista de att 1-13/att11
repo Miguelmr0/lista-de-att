@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <locale.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    setlocale(LC_ALL, "Portuguese");
+
+    char entradaCompra[20], entradaPago[20];
+    char *ponto;
+    int reaisCompra = 0, centavosCompra = 0;
+    int reaisPago = 0, centavosPago = 0;
+    int valorCompra, valorPago, troco;
+
+    int cem, cinquenta, vinte, dez, cinco, dois, um;
+    int m50, m25, m10, m5;
+
+    printf("Digite o valor da compra (ex: 12,85 ou 12.85): ");
+    scanf("%s", entradaCompra);
+
+    printf("Digite o valor pago pelo cliente (ex: 20,00 ou 20.00): ");
+    scanf("%s", entradaPago);
+
+    {
+        int i;
+        for (i = 0; i < strlen(entradaCompra); i++) {
+            if (entradaCompra[i] == ',') {
+                entradaCompra[i] = '.';
+            }
+        }
+    }
+
+    ponto = strchr(entradaCompra, '.');
+
+    if (ponto != NULL) {
+        *ponto = '\0';
+        reaisCompra = atoi(entradaCompra);
+
+        if (strlen(ponto + 1) == 1) {
+            centavosCompra = atoi(ponto + 1) * 10;
+        } else {
+            char temp[3];
+            temp[0] = *(ponto + 1);
+            temp[1] = *(ponto + 2);
+            temp[2] = '\0';
+            centavosCompra = atoi(temp);
+        }
+    } else {
+        reaisCompra = atoi(entradaCompra);
+        centavosCompra = 0;
+    }
+
+    valorCompra = reaisCompra * 100 + centavosCompra;
+
+    {
+        int i;
+        for (i = 0; i < strlen(entradaPago); i++) {
+            if (entradaPago[i] == ',') {
+                entradaPago[i] = '.';
+            }
+        }
+    }
+
+    ponto = strchr(entradaPago, '.');
+
+    if (ponto != NULL) {
+        *ponto = '\0';
+        reaisPago = atoi(entradaPago);
+
+        if (strlen(ponto + 1) == 1) {
+            centavosPago = atoi(ponto + 1) * 10;
+        } else {
+            char temp[3];
+            temp[0] = *(ponto + 1);
+            temp[1] = *(ponto + 2);
+            temp[2] = '\0';
+            centavosPago = atoi(temp);
+        }
+    } else {
+        reaisPago = atoi(entradaPago);
+        centavosPago = 0;
+    }
+
+    valorPago = reaisPago * 100 + centavosPago;
+
+    troco = valorPago - valorCompra;
+
+    if (troco < 0) {
+        printf("\nValor pago insuficiente!\n");
+        return 0;
+    }
+
+    printf("\nTroco do cliente: R$ %d,%02d\n", troco / 100, troco % 100);
+
+    cem = troco / 10000;
+    troco = troco % 10000;
+
+    cinquenta = troco / 5000;
+    troco = troco % 5000;
+
+    vinte = troco / 2000;
+    troco = troco % 2000;
+
+    dez = troco / 1000;
+    troco = troco % 1000;
+
+    cinco = troco / 500;
+    troco = troco % 500;
+
+    dois = troco / 200;
+    troco = troco % 200;
+
+    um = troco / 100;
+    troco = troco % 100;
+
+    m50 = troco / 50;
+    troco = troco % 50;
+
+    m25 = troco / 25;
+    troco = troco % 25;
+
+    m10 = troco / 10;
+    troco = troco % 10;
+
+    m5 = troco / 5;
+
+    printf("\nCedulas e moedas do troco:\n");
+    printf("%d nota(s) de R$ 100,00\n", cem);
+    printf("%d nota(s) de R$ 50,00\n", cinquenta);
+    printf("%d nota(s) de R$ 20,00\n", vinte);
+    printf("%d nota(s) de R$ 10,00\n", dez);
+    printf("%d nota(s) de R$ 5,00\n", cinco);
+    printf("%d nota(s) de R$ 2,00\n", dois);
+    printf("%d moeda(s) de R$ 1,00\n", um);
+    printf("%d moeda(s) de R$ 0,50\n", m50);
+    printf("%d moeda(s) de R$ 0,25\n", m25);
+    printf("%d moeda(s) de R$ 0,10\n", m10);
+    printf("%d moeda(s) de R$ 0,05\n", m5);
+
+    return 0;
+}
