@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main(){
+    setlocale(LC_ALL, "Portuguese");	
+    
+    float salario;
+    float porcentagem = 0.15;
+    float vendas;
+    float total;
+    
+    printf("Digite o valor do salário fixo: \n");
+    scanf("%f", &salario);
+    
+    printf("Digite a quantidade de vendas realizadas no mês: \n");
+    scanf("%f", &vendas);
+    
+    total = (porcentagem * vendas * salario)+ salario;
+    printf("Seu salário final é: %.2f \n", total);
+    
+    printf("E seu salario inicial era de: %.2f \n", salario);
+	
+	return 0;         
+}
