@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main(){ 
+	setlocale(LC_ALL, "Portuguese");
+	 int x;
+	 int y;
+   int resultadoquo;
+   int resto;
+
+	 
+	 printf("Digite o dividendo (número a ser divido): \n");
+	 scanf("%d" , &x);
+	 
+	 printf("Digite o divisor: \n");
+	 scanf("%d" , &y);
+	 
+   resultadoquo = x / y; 
+	 printf("Resultado: %d \n",  resultadoquo);
+	 
+	 resto = x % y;
+	 printf("Resto da operação: %d", resto);
+	 
+     return 0; } 
